@@ -10,6 +10,9 @@ on:
     
     branches:
       - main 
+    tags:
+      - '*'
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,10 +48,11 @@ jobs:
           name: build
 
       - name: Zip
+        if: startsWith(github.ref, 'refs/tags/')
         run: zip -r mi_app.zip ./miapp
 
-      - name: GH Release
-        uses: softprops/action-gh-release@v2.2.1
+      - uses: softprops/action-gh-release@v2.2.1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: ./mi_app.zip
           body: "Nuestra aplicacion"

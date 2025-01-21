@@ -9,7 +9,7 @@ on:
       - 'Pruebas/**'
     
     branches:
-     - main 
+      - main 
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'github/workflows/compilar-desplegar.yml'
+      - '.github/workflows/compilar-desplegar.yml'
       - 'GithubActionsDemoApp/**'
       - 'Pruebas/**'
     

@@ -20,7 +20,7 @@ namespace GithubActionsDemoApp.Controllers
             var personas = await context.Personas.ToListAsync();
             var modelo = new PersonasIndex()
             {
-                //Personas = personas
+                Personas = personas
             };
             return View(modelo);
         }

@@ -1,0 +1,23 @@
+name: Compilar y Desplegar
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        
+      - name: Instalar .Net
+        uses: actions/setup-dotnet@v4.2.0
+        with:
+           dotnet-version: 8.0.x
+
+      - name: Obteniendo las dependencias
+        run: dotnet restore
+
+      - name: compilar
+        run: dotnet build --no-restore
+        

@@ -13,6 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       proyecto: GithubActionsDemoApp/GithubActionsDemoApp.csproj
     steps:
@@ -41,4 +43,13 @@ jobs:
         with:
           path: ./miapp
           name: build
-        
+
+      - name: Zip
+        run: zip -r mi_app.zip ./miapp
+
+      - name: GH Release
+        uses: softprops/action-gh-release@v2.2.1
+        with:
+          files: ./mi_app.zip
+          body: "Nuestra aplicacion"
+          tag_name: ${{ github.ref_name }}

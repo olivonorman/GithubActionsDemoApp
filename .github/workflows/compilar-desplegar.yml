@@ -48,7 +48,7 @@ jobs:
         run: dotnet publish $proyecto -c Release -o miapp --runtime win-x86
 
       - name: Generar script de migraciones
-        run: dotnet ef migrations script -i -o migraciones.sql $proyecto
+        run: dotnet ef migrations script -i -o migraciones.sql --project $proyecto
         
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.6.0
